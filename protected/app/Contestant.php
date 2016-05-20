@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Contestant extends Model
 {
     //
+    public function contest()
+    {
+        return $this->belongsTo('\App\Contest','contest_id');
+    }
     public function district()
     {
         return $this->belongsTo('\App\District','district_id');
