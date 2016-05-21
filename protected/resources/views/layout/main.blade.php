@@ -64,7 +64,7 @@
 <div class="breadcrumbs">
  <div class="container">
      <div class="row">
-         <div class="col-lg-4 col-sm-9">
+         <div class="col-lg-10 col-sm-10">
              <h1>@yield('breadcrumbs')</h1>
          </div>
      </div>
