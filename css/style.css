@@ -1282,10 +1282,13 @@ ul.about-flex-slides {
 }
 
 .blog-side-item h3 {
-    margin-top: 30px;
-    color: #475268;
+    margin-top: -1px;
+    color: #fff;
     font-size: 18px;
     font-family: 'Fjalla One', sans-serif;
+    background-color: #F77B6F;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .blog-side-item ul li {

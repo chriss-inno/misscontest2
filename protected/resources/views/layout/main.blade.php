@@ -49,7 +49,7 @@
                  <span class="fa fa-bar"></span>
                  <span class="fa fa-bar"></span>
              </button>
-             <a class="navbar-brand" href="{{url('home')}}"><span> <?php $contestDefault=\App\Contest::where('default','=','Yes')->get()->first();?>@if(count($contestDefault)> 0){{$contestDefault->contest_name}}@endif</span></a>
+             <a class="navbar-brand" href="{{url('home')}}"><span style="    font-size: 24px;font-weight: 600;text-transform: uppercase;"> <?php $contestDefault=\App\Contest::where('default','=','Yes')->get()->first();?>@if(count($contestDefault)> 0){{$contestDefault->contest_name}}@endif</span></a>
          </div>
          <div class="navbar-collapse collapse ">
              @yield('menus')

@@ -16,3 +16,6 @@ Route::get('home','HomeController@index');
 Route::get('about','HomeController@about');
 Route::get('show-case','HomeController@portfolio');
 Route::get('contact-us','HomeController@contact');
+//Contestants
+Route::get('contestant/review/{id}','ContestantController@show');
+

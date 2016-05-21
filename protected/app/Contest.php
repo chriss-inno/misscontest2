@@ -11,4 +11,9 @@ class Contest extends Model
     {
         return $this->hasMany('\App\Contestant','contest_id','id');
     }
+
+    public function contestantsMostViewed()
+    {
+        return $this->hasMany('\App\Contestant','contest_id','id')->orderBy('hints','Desc')->take(5);
+    }
 }
