@@ -16,8 +16,8 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="blog-side-item">
-                    <div class="blog-post">
-                        <h3>Most viewed</h3>
+                    <div class="blog-post" id='content'>
+                        <h3>Contestants Profiles</h3>
                         @if(count($contestDefault)>0 && $contestDefault != null)
                             @if($contestDefault->contestants !=null && count($contestDefault->contestants)>0)
                                 @foreach($contestDefault->contestantsMostViewed as $contestants)
