@@ -10,6 +10,59 @@
         <li><a href="{{url('contact-us')}}">Contact</a></li>
     </ul>
 @stop
+@section('style-p1')
+
+    {!!Html::style("css/gallery.css")!!}
+    @stop
+@section('scripts-p3')
+    {!!Html::script("js/modernizr.custom.js")!!}
+    {!!Html::script("js/toucheffects.js")!!}
+    @stop
+@section('scripts-p3')
+    <script>
+        $(window).load(function() {
+            $('[data-zlname = reverse-effect]').mateHover({
+                position: 'y-reverse',
+                overlayStyle: 'rolling',
+                overlayBg: '#fff',
+                overlayOpacity: 0.7,
+                overlayEasing: 'easeOutCirc',
+                rollingPosition: 'top',
+                popupEasing: 'easeOutBack',
+                popup2Easing: 'easeOutBack'
+            });
+        });
+        $(window).load(function() {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function(slider) {
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+        //    fancybox
+        jQuery(".fancybox").fancybox();
+        $(function() {
+            var $container = $('#gallery');
+            $container.isotope({
+                itemSelector: '.item',
+                animationOptions: {
+                    duration: 750,
+                    easing: 'linear',
+                    queue: false
+                }
+            });
+            // filter items when filter link is clicked
+            $('#filters a').click(function() {
+                var selector = $(this).attr('data-filter');
+                $container.isotope({filter: selector});
+                return false;
+            });
+        });
+
+
+    </script>
+    @stop
 @section('contents')
     <?php $contestDefault=\App\Contest::where('default','=','Yes')->get()->first();?>
     <div class="container">
@@ -41,31 +94,31 @@
             </div>
             <div class="col-lg-7">
                 <!--portfolio start-->
-                <div class="gallery-container">
+                <section class="panel">
 
-                    <div id="gallery" class="col-4">
+                    <div class="panel-body">
+                        <ul class="grid cs-style-3">
+                @if(count($contestDefault)>0 && $contestDefault != null)
+                    @if($contestDefault->contestants !=null && count($contestDefault->contestants)>0)
+                        @foreach($contestDefault->contestants as $contestants)
 
-                            @if(count($contestDefault)>0 && $contestDefault != null)
-                                @if($contestDefault->contestants !=null && count($contestDefault->contestants)>0)
-                                    @foreach($contestDefault->contestants as $contestants)
-                                    <div class="element design development item view view-tenth" data-zlname="reverse-effect">
-                                        <img src="{{ asset('img/profile/'.$contestants->profile_image) }}" alt="{{$contestants->full_name}}" />
-                                        <div class="mask">
-                                            <h2>{{$contestants->full_name}}</h2>
-                                            <a data-zl-popup="link" href="{{url('contestant/review')}}/{{$contestants->id}}">
-                                                <i class="fa fa-bar-chart-o"></i>
-                                            </a>
-                                            <a data-zl-popup="link2" class="fancybox" rel="group" href="{{ asset('img/profile/'.$contestants->profile_image) }}">
-                                                <i class="fa fa-search"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                @endif
-                            @endif
+                    <li>
+                        <figure>
+                            <img src="{{ asset('img/profile/'.$contestants->profile_image) }}" alt="{{$contestants->full_name}}" />
+                            <figcaption>
+                                <h3 class="pull-left">{{$contestants->full_name}}</h3>
+                                <a href="{{url('contestant/review')}}/{{$contestants->id}}" class="pull-right">Vote</a>
+                            </figcaption>
+                        </figure>
+                    </li>
 
+                    @endforeach
+                @endif
+            @endif
+                         </ul>
                     </div>
-                </div>
+                </section>
+
                 <!--portfolio end-->
             </div>
             <div class="col-lg-2">

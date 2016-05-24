@@ -28,6 +28,7 @@
 {!!Html::style("css/superfish-vertical.css" )!!}
 
  <!-- Custom styles for this template -->
+    @yield('style-p1')
 {!!Html::style("css/style.css")!!}
 {!!Html::style("css/style-responsive.css" )!!}
 
@@ -125,7 +126,7 @@
 {!! Html::script("js/jquery.flexslider.js")!!}
 {!! Html::script("assets/bxslider/jquery.bxslider.js")!!}
 
-
+@yield('scripts-p4')
 {!! Html::script("js/superfish.js")!!}
 {!! Html::script("js/jquery.isotope.js")!!}
 
@@ -134,62 +135,13 @@
 
 {!! Html::script("assets/fancybox/source/jquery.fancybox.pack.js")!!}
 
-
+@yield('scripts-p1')
 <!--common script for all pages-->
 {!! Html::script("js/common-scripts.js")!!}
 
 
+@yield('scripts-p2')
 
-<script>
-
-
- $(window).load(function() {
-     $('[data-zlname = reverse-effect]').mateHover({
-         position: 'y-reverse',
-         overlayStyle: 'rolling',
-         overlayBg: '#fff',
-         overlayOpacity: 0.7,
-         overlayEasing: 'easeOutCirc',
-         rollingPosition: 'top',
-         popupEasing: 'easeOutBack',
-         popup2Easing: 'easeOutBack'
-     });
- });
-
- $(window).load(function() {
-     $('.flexslider').flexslider({
-         animation: "slide",
-         start: function(slider) {
-             $('body').removeClass('loading');
-         }
-     });
- });
-
- //    fancybox
- jQuery(".fancybox").fancybox();
-
- $(function() {
-     var $container = $('#gallery');
-     $container.isotope({
-         itemSelector: '.item',
-         animationOptions: {
-             duration: 750,
-             easing: 'linear',
-             queue: false
-         }
-     });
-
-     // filter items when filter link is clicked
-     $('#filters a').click(function() {
-         var selector = $(this).attr('data-filter');
-         $container.isotope({filter: selector});
-         return false;
-     });
- });
-
-
-
-</script>
-
+@yield('scripts-p3')
 </body>
 </html>
